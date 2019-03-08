@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+	<html>
+	<head>
+	<title> 
+	Caesar Cipher Project
+	</title>
+	<link rel="stylesheet" type="text/css" href="CipherStyle.css"> </link>
+	<script type="text/JavaScript">
+	//Created By Yansong and Maxwell
+	
+	var keyNum = Math.ceil(Math.random() * 25)
+	var alphaArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+	var codedArray = []
+	var mesArray=["Go Cubs","Shots Fired","What does the fox say","Meme City","The chicken or the egg"]
+	var randWord = mesArray[Math.floor(Math.random()* 5)];
+	var	codeWord = encryptEngCaesar(randWord.toLowerCase());
+	
+	function encryptEngCaesar(string)
+		{
+			keyNum = Math.ceil(Math.random() * 25)
+			for (i=alphaArray.length;i>0;i--) {
+				codedArray[i + keyNum] = alphaArray[i]
+			}
+			for ( i=0;i<keyNum;i++) {
+				codedArray.shift()
+			}
+			
+			for (i=0; i<string.length;i++) {
+				for (j=0;j<26;j++) {
+					if (string.charAt(i) == alphaArray[j]) {
+								string = string.replace(string.charAt(i), codedArray[j ]);
+							break	
+					}
+				}
+			}
+			return string;
+		}
+	function startGame() {
+	
+			randWord = mesArray[Math.floor(Math.random()* mesArray.length)];
+			codeWord = encryptEngCaesar(randWord.toLowerCase());
+			codeWord = codeWord.toUpperCase();
+			
+			puzzleDiv.innerHTML = "Remaining guesses: 5";
+			
+			 return codeWord;
+	}
+	
+	function pickLetter(letter){
+		for (i=0; i<codeWord.length;i++) {
+					if (letter.toLowerCase() == randWord.charAt(i)) {
+								codeWord = codeWord.replace(codeWord.charAt(i), randWord.charAt(i));
+							
+					}
+			}
+		return codeWord;
+	}
+	
+	function submitWord() {
+			 
+		
+	}
+	
+	function addPuzzle(puzz) {
+	
+			 mesArray.push(puzz)
+			 return alert("Done")
+		
+	}
+	</script>
+	
+	
+	</head>
+	
+	<body>
+	<h1>Caesar Cipher Puzzle</h1>
+	<br>
+	<h2 id=numberGuess>Remaining guesses : 5</h2>
+	<br>	
+	<div id=puzzleDiv></div>
+	<br>
+	<input type=button value="New Word" onClick="puzzleDiv.innerHTML = startGame()">
+	<br>
+	<h3>Guess a letter</h3>
+	<br>
+	<select id=letSel onchange="puzzleDiv.innerHTML = pickLetter(this.value)">
+		<option> </option>
+		<option id=hangA onClick="this.disabled"> A <option id=hangB> B
+		<option id=hangC> C <option id=hangD> D
+		<option id=hangE> E <option id=hangF> F
+		<option id=hangG> G <option id=hangH> H
+		<option id=hangI> I <option id=hangJ> J
+		<option id=hangK> K <option id=hangL> L
+		<option id=hangM> M <option id=hangN> N
+		<option id=hangO> O <option id=hangP> P
+		<option id=hangQ> Q <option id=hangR> R
+		<option id=hangS> S <option id=hangT> T
+		<option id=hangU> U <option id=hangV> V
+		<option id=hangW> W <option id=hangX> X
+		<option id=hangY> Y <option id=hangZ> Z
+		</select>
+	<br>
+	<h4>Solve the puzzle:</h4>
+	<br>
+	<input type=text id=solveWord>
+	<input type=button value="Submit Word" onClick="submitWord()">
+	<br>
+	<h4>Add Puzzle:</h4>
+	<input type=text id=addWord>
+	<input type=button value="Submit New Puzzle" onClick="addPuzzle(addWord.value)">
+	
+	
+	</body>
+	</html>
+
+
+
+
+
+
+
+

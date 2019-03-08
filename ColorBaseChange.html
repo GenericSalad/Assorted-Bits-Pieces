@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+	<html>
+	<head>
+	<title> 		</title>
+	<style type="text/css">
+	body 	{text-align: center;
+				margin-top: 180px;
+				background-image: url(coffee_cup.gif);
+				background-repeat: no-repeat;
+				background-position: 50% 5%}
+	</style>
+	<script type="text/JavaScript">
+	function changeBackground()
+		{
+			var redV = document.getElementById("rV").value;
+			var greenV = document.getElementById("gV").value;
+			var blueV = document.getElementById("bV").value;
+			
+			var redHex
+			var greenHex
+			var blueHex
+			var hexString
+			
+			redHex = baseChange(redV);
+			greenHex = baseChange(greenV);
+			blueHex = baseChange(blueV);
+			hexString = redHex + greenHex + blueHex
+			
+			document.body.style.backgroundColor = hexString ;
+			alert(blueHex)
+			alert(blueV)
+		}
+	function baseChange(cNum)
+		{
+			var counter = 0;
+			var string = ""
+			var remainder = 0
+			
+			while (Math.pow(16,counter) < cNum) {
+				counter += 1;
+			} 
+			 if (cNum % Math.pow(16,counter-1) == 0){
+			 return;
+			 } else {
+			 remainder = cNum % Math.pow(16,counter-1);
+			 cNum -= remainder;
+			 cNum = cNum/16;
+				if (cNum == 10){
+				string += "A";
+				} else if (cNum == 11){
+				string += "B";
+				} else if (cNum == 12){
+				string += "C";
+				} else if (cNum == 13){
+				string += "D";
+				} else if (cNum == 14){
+				string += "E";
+				} else if (cNum == 15){
+				string += "F";
+				} else {string += cNum}
+			if (remainder == 0 ){
+			return string;
+			} else {
+			baseChange(remainder);
+			}
+				
+				
+			 }
+			 
+			
+		}
+	</script>
+	
+	
+	</head>
+	
+	<body>
+		<form>
+		Red: 
+		<input type=text value="Type Number Here" id=rV > 
+		<div id=rHex> </div>
+		<br>
+		Green: 
+		<input type=text value="Type Number Here" id=gV>
+		<div id=gHex> </div>
+		<br>
+		Blue: 
+		<input type=text value="Type Number Here" id=bV>
+		<div id=bHex> </div>
+		<br> <br>
+		<input type=button value="Convert" onClick="changeBackground()" >
+		
+		
+		</form>
+	
+	
+	</body>
+	</html>

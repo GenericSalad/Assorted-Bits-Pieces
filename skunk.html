@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+	<html>
+	<head>
+	<title> 		</title>
+	<style type="text/css">
+	body 	{text-align: center;
+			margin-top: 10px;
+				}
+	p		{font-size: 12px;
+			font-family: Arial;
+			}
+	p.trackRolls {position: fixed
+				left: 10%;
+				top: 10%;
+				}
+	
+	p.trackScore {position: fixed
+				right: 100px;
+				top: 100px;
+				}
+	</style>
+	<script type="text/JavaScript">
+	
+	var rolls = 0 // track rolls p1
+	var rolls2 = 0 // track rolls for p2
+	var points1 = 0 // track p1 pts
+	var points2 = 0 // track p2 pts
+	var multiP = false // see if two player
+	var turn = 1 // track turn
+	var rPts = 0 // hold score for current round
+	var skunks = 0 //track number of skunks per roll
+	var p1char = "" // determine which avatar player one uses, more efficient than making another variable but possibly more confusing
+	
+	function playGame() { // run game code
+	
+		if (turn == 1) {	
+			rolls++;
+			p1Rolls.innerHTML = "P1 Rolls: " + rolls // add a roll
+			
+			var rollpts = rollDice() // get value for roll	
+			
+			if (multiP == false) { // check if 1 player
+				points1 += rollpts
+				if (rollpts == 0) {
+					alert("RIP YOU")
+					points1 = 0					
+					}
+				
+			} else {
+					rPts += rollpts
+
+				if (rollpts == 0) {
+					alert("RIP YOU")
+					points1 = 0	
+					switchAva();
+					turn = 2
+					rPts = 0					
+				} else if (skunks == 1) { // if a skunk is rolled pass the turn
+					rPts -= rollpts // make it so that rolling a skunk completely negates that roll
+					points1 += rPts
+					switchAva();
+					turn = 2
+					rPts = 0
+					
+				}
+					rScore.innerHTML = rPts
+					turnTrack.innerHTML = "It is Player " + turn + "'s turn"
+			}
+			skunks = 0
+			p1Score.innerHTML = "P1 Score: " + points1
+			
+			if (points1 >= 100 || rPts >= 100) {
+				alert("P1 has won")
+				restartGame() //call func restart game
+				return
+			}
+			
+		} else if (turn == 2) {	
+			rolls2++;
+			p2Rolls.innerHTML = "P2 Rolls: " + rolls2 // add a roll
+			
+			var rollpts = rollDice() // get value for roll	
+			
+				rPts += rollpts
+
+				if (rollpts == 0) {
+					alert("RIP YOU")
+					points2 = 0	
+					switchAva(); // don't know why I'm saying this now but thank js for not requiring semicolons so I can be lazy for now
+					turn = 1
+					rPts = 0					
+				} else if (skunks == 1) { // if one skunk rolled, collect score and pass turn
+					rPts -= rollpts // make it so that rolling a skunk completely negates that roll
+					points2 += rPts
+					switchAva();
+					turn = 1
+					rPts = 0
+				}
+					rScore.innerHTML = rPts
+					p2Score.innerHTML = "P2 Score: " + points2
+					skunks = 0 
+					turnTrack.innerHTML = "It is Player " + turn + "'s turn"
+					
+				if (points2 >= 100 || rPts >= 100) {
+				alert("P2 has won")
+				restartGame() //call func restart game
+				return
+			}
+			
+		} 
+	}
+	
+	function rollDice() { // roll dice and replace images
+	
+		var num = 0 
+		var total = 0
+		var srcString = ""
+		
+		for (i=0;i<2;i++) {
+			num = Math.ceil(Math.random()*6)
+			if(num != 1) {
+				total += num
+				srcString = "d" + num + ".gif"
+				if (i==1){
+					roll1Img.src = srcString
+				} else{
+					roll2Img.src = srcString
+				}
+				
+			} else {
+				if (i==1){
+					roll1Img.src = "oneSkunk.jpg"
+				} else{
+					roll2Img.src = "oneSkunk.jpg"
+				}
+				skunks++ // track amount of skunks so that turn can automatically pass
+			}		
+		}
+	
+		return total
+	
+	}
+	
+	function restartGame() { //reset values and check if launch in 2p or 1p
+		
+		gMode = confirm("Launch in 2 Player Mode /n(Will be 1 player otherwise)") // 2p or 1p
+			if (gMode == true) {
+				
+				p2Rolls.innerHTML = "P2 Rolls:"
+				
+				p2Score.innerHTML = "P2 Score:"
+				
+				rScoreText.innerHTML = "The score for the current round: "
+				rScore.innerHTML = 0
+				passHold.innerHTML = "<input type=button value='Collect your round score and pass the turn' onClick='passTurn()'> "
+				multiP = true
+				rScoreText.innerHTML = "Score for this round"
+				turnTrack.innerHTML = "It is Player " + turn + "'s turn"
+			} else {
+				p2Rolls.innerHTML = ""
+				p2Score.innerHTML = ""
+				
+				rScoreText.innerHTML = ""
+				rScore.innerHTML = ""
+				passHold.innerHTML = ""
+				multiP = false
+			}
+			p1Rolls.innerHTML = "Pl Rolls:" 
+			p1Score.innerHTML = "Pl Score:"
+			
+			rolls = 0 // reset values
+			rolls2 = 0 
+			points1 = 0
+			points2 = 0 
+			turn = 1
+			
+		roll1Img.src = "oneSkunk.jpg" // reset images
+		roll2Img.src = "oneSkunk.jpg"
+		
+	}
+	
+	function passTurn() {
+		if (turn == 1 ) {
+			points1 += rPts;
+			p1Score.innerHTML = "P1 Score: " + points1;
+			rPts = 0
+			rScore.innerHTML = rPts
+			switchAva();
+			turn = 2;
+			if (points1 >= 100) {
+				alert("P1 has won")
+				restartGame() //call func restart game
+				return
+			}
+			
+			
+		} else if (turn == 2) {
+			points2 += rPts;
+			p2Score.innerHTML = "P2 Score: " + points2;
+			rPts = 0
+			rScore.innerHTML = rPts
+			switchAva();
+			turn = 1;
+			if (points2 >= 100) {
+				alert("P2 has won")
+				restartGame() //call func restart game
+				return
+			}
+			
+			
+		} else { // failsafe 
+			alert("An error has occured. The game is being restarted")
+			restartGame();
+		}
+	}
+	
+	function chooseChar(avatar) { // allow players to select avatar, may be changeable to use switch func
+		if (turn == 1) { 
+			if (avatar == "J") { 
+				gifSelect.innerHTML = "<img src='Jerry.gif'>"	
+			} else {
+				gifSelect.innerHTML = "<img src='Tom.gif'>"
+			}
+			p1char = avatar
+		} else if (turn == 2)
+		if (avatar == "J") {
+				gifSelect.innerHTML = "<img src='Jerry.gif'>"
+				p1char = "T"
+			} else {
+				gifSelect.innerHTML = "<img src='Tom.gif'>"
+				p1char = "J"
+			}
+	}
+	function switchAva() { // switch avatars, USE BEFORE CHANGING TURN
+		if (p1char == "J" && turn == 1) { 
+				gifSelect.innerHTML = "<img src='Tom.gif'>"	
+		} else if (p1char == "T" && turn == 1) {
+				gifSelect.innerHTML = "<img src='Jerry.gif'>"
+		} else if (p1char == "J" && turn == 2) { 
+				gifSelect.innerHTML = "<img src='Jerry.gif'>"	
+		} else if (p1char == "T" && turn == 2) { 
+				gifSelect.innerHTML = "<img src='Tom.gif'>"	
+		}
+	}
+	</script>
+
+	</head>
+	
+	<body onLoad="restartGame()" >
+	
+	<h1> Skunk RNG Game <h1> 
+	<br><BR>
+	<p> This is the dice game skunk. Your objective is to roll dice with values between 2 and 6 inclusive to get your score to 100 as fast as possible. 
+	The 1 is replaced with a skunk which is worth nothing. It is 100% RNG. If you roll two skunks your score returns to 0. GLHF </p>
+	<br> 
+	<div id=gifSelect>
+	<h3> Choose an avatar! </h3>
+	<img id=jerGif src="Jerry.gif" onClick="chooseChar('J')" title="Choose me!"> </img>
+	<img id=tomGif src="Tom.gif" onClick="chooseChar('T')" title="Choose me!"> </img>
+	</div>
+	<br>
+	<p id=p1Rolls class=trackRolls> P1 Rolls: </p>
+	<p id=p2Rolls class=trackRolls> </p>
+	<br> <Br>
+	<p id=p1Score class=trackScore> P1 Score: </p>
+	<p id=p2Score class=trackScore> </p>
+	<br> <Br>
+	<p id=rScoreText> </p>
+	<p id=rScore> </p>
+	<br>
+	<p id=turnTrack> </p>
+	
+	<img id=roll1Img width=100px height = 100px src="oneSkunk.jpg" title="These skunks aren't as cute as I remember them"> </img>
+	<img id=roll2Img width=100px height = 100px src="oneSkunk.jpg" title="These skunks aren't as cute as I remember them"> </img>
+	 
+	<br> <Br>
+	
+	<input type=button value="Roll the Dice" onClick="playGame()" >
+	<p id=passHold> </p>
+	
+		
+	
+	</body>
+	</html>
