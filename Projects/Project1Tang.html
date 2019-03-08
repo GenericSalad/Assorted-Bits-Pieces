@@ -1,0 +1,348 @@
+	<!DOCTYPE HTML>
+	<html>
+	<head>
+		<title> Computer Mad Libs </title>
+		<link rel=styleSheet type="text/css" href="PersonalStyle.css" >
+		
+		<script>
+		function storyNew()	{
+			var hero = document.getElementById('heroName').value;
+			var monster = document.getElementById('antag').value;
+			var monAdj1 = document.getElementById('gigantic').value;
+			var monAdj2 = document.getElementById('revolting').value;
+			var verb1 = document.getElementById('outOfBed').value;
+			var job1 = document.getElementById('vigilante').value;
+			var job2 = document.getElementById('assassin').value;
+			var adv1 = document.getElementById('rapidly').value;
+			var noun1 = document.getElementById('nightwear').value;
+			var wbase = document.getElementById('armory').value;
+			var lunch = document.getElementById('shishkabob').value;
+			var verb2 = document.getElementById('devour').value;
+			var noun2 = document.getElementById('scythe').value;
+			var tHulk = document.getElementById('hulk').value;
+			var adj3 = document.getElementById('faithful').value;
+			var doge = document.getElementById('damsName').value;
+			// paragraph 2 
+			//story + "<span class='wordChange'>" + hero + "</span>"
+			var verb3 = document.getElementById('stumbled').value;
+			var noun3 = document.getElementById('blood').value;
+			var verb4 = document.getElementById('kidnapped').value;
+			var adv2 = document.getElementById('properly').value;
+			var noun4 = document.getElementById('profile').value;
+			var noun5 = document.getElementById('mush').value;
+			var adv3 = document.getElementById('finally').value;
+			
+			var story = "<span class='wordChange' str.toUpperCase('1')>" + hero + "</span>" + " didn't expect to be assaulted by a ";
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " upon waking, especially not one that was so ";
+			story = story + "<span class='wordChange'>" + monAdj1 + "</span>" + ". It's " ;
+			story = story + "<span class='wordChange'>" + monAdj2 + "</span>" + " features and horrendous breath nearly disabled him from " ;
+			story = story + "<span class='wordChange'>" + verb1 + "</span>"  + " out of the way before the " ;
+			story = story + "<span class='wordChange'>" + monAdj1 + "</span>" + " " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " killed him. As a self proclaimed " ;
+			story = story + "<span class='wordChange'>" + job1 + "</span>" + " slash " ;
+			story = story + "<span class='wordChange'>" + job2 + "</span>" + "with combat training, " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " wanted to fight back again the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + ", however he " ;
+			story = story + "<span class='wordChange'>" + adv1 + "</span>" + " recalled that he had just woken up, and was lacking in weaponry. That and the fact that he was still wearing his " ;
+			story = story + "<span class='wordChange'>" + noun1 + "</span>" + " forced " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " to run to his " ;
+			story = story + "<span class='wordChange'>" + wbase + "</span>" + " to equip himself before the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " turned him into a " ;
+			story = story + "<span class='wordChange'>" + lunch + "</span>" + ". The " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " chased "; 
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " into his" ;
+			story = story + "<span class='wordChange'>" + wbase + "</span>" + " where it prepared to " ;
+			story = story + "<span class='wordChange'>" + verb2 + "</span>" + " him, but luckily for " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + ", he forgot to put his favorite " ;
+			story = story + "<span class='wordChange'>" + noun2 + "</span>" + " into storage, which was aptly named \"My little friend\" despite being much larger than " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " himself. He then pivoted and used his momentum to hurl his " ;
+			story = story + "<span class='wordChange'>" + noun2 + "</span>" + " at the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + ", slashing it to pieces. After retrieving his weapon, " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " decided to take another look at the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " he just killed, and upon doing so realized that he had just killed " ;
+			story = story + "<span class='wordChange'>" + tHulk + "</span>" + ". \"Oh well\", he said to himself, when it dawned on him that his " ;
+			story = story + "<span class='wordChange'>" + adj3 + "</span>" + " sidekick, " ;
+			story = story + "<span class='wordChange'>" + doge + "</span>" + ", was nowhere to be found!";
+			//part 2
+			var part2 = "He searched everywhere for " + "<span class='wordChange'>" + doge + "</span>" ;
+			part2 = part2 + ", but he just couldn't find any trace of her until he " ;
+			part2 = part2 + "<span class='wordChange'>" + verb3 + "</span>" + " across a small trail of " ;
+			part2 = part2 + "<span class='wordChange'>" + noun3 + "</span>" + " leading out of his base of operations. " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + " had been " ;
+			part2 = part2 + "<span class='wordChange'>" + verb4 + "</span>" + "! After " ;
+			part2 = part2 + "<span class='wordChange'>" + adv2 + "</span>" + " equipping himself, " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + " began to follow " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + "'s trail so that he might be able to rescue her. Eventually, the trail of " ;
+			part2 = part2 + "<span class='wordChange'>" + noun3 + "</span>" + " ended, but thankfully for " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + ", the captors were very bad at maintaining a low " ;
+			part2 = part2 + "<span class='wordChange'>" + noun4 + "</span>" + ", and he was able to track them all the way down to their hideout. " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + " stormed the hideout,\, turning all those who opposed him into " ;
+			part2 = part2 + "<span class='wordChange'>" + noun5 + "</span>" + ", and was ";
+			part2 = part2 + "<span class='wordChange'>" + adv3 + "</span>" + " reunited with " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + ". Oh how he had missed that dog!";
+			
+			/* if (document.getElementById('heroName').value.length > 1);
+			return false;
+			
+			if (document.getElementById('heroName').value.length < 1);
+				window.alert('Please fill out the first \"Name\" box.');
+				document.getElementById('heroName').focus(); 
+								
+			if (document.getElementById('antag').value.length < 1);
+				window.alert('Please fill out the first \"Noun\" box.');
+				document.getElementById('antag').focus();
+				
+			if (document.getElementById('gigantic').value.length < 1);
+				window.alert('Please fill out the first \"Adjective\" box.');
+				document.getElementById('gigantic').focus();
+				
+			if (document.getElementById('revolting').value.length < 1);
+				window.alert('Please fill out the second \"Adjective\" box.');
+				document.getElementById('revolting').focus();
+				
+			if (document.getElementById('vigilante').value.length < 1);
+				window.alert('Please fill out the first \"Occupation\" box.');
+				document.getElementById('vigilante').focus();
+				
+			if (document.getElementById('assassin').value.length < 1);
+				window.alert('Please fill out the  \"Occupation\" box.');
+				document.getElementById('assassin').focus();
+				
+			if (document.getElementById('rapidly').value.length < 1);
+				window.alert('Please fill out the first \"Adverb\" box.');
+				document.getElementById('rapidly').focus();
+				
+			if (document.getElementById('nightwear').value.length < 1);
+				window.alert('Please fill out the \"Clothing\" box.');
+				document.getElementById('nightwear').focus();
+				
+			if (document.getElementById('armory').value.length < 1);
+				window.alert('Please fill out the \"Place\" box.');
+				document.getElementById('armory').focus();
+				
+			if (document.getElementById('shishkabob').value.length < 1);
+				window.alert('Please fill out the \"Food\" box.');
+				document.getElementById('shishkabob').focus();
+				
+			if (document.getElementById('devour').value.length < 1);
+				window.alert('Please fill out the second \"Verb\" box.');
+				document.getElementById('devour').focus();
+				
+			if (document.getElementById('scythe').value.length < 1);
+				window.alert('Please fill out the second \"Noun\" box.');
+				document.getElementById('scythe').focus();
+				
+			if (document.getElementById('hulk').value.length < 1);
+				window.alert('Please fill out the \"Superhero\" box.');
+				document.getElementById('hulk').focus();
+				
+			if (document.getElementById('faithful').value.length < 1);
+				window.alert('Please fill out the third \"Adjective\" box.');
+				document.getElementById('faithful').focus();
+				
+			if (document.getElementById('damsName').value.length < 1);
+				window.alert('Please fill out the second \"Name\" box.');
+				document.getElementById('damsName').focus();
+				//PART2
+			if (document.getElementById('stumbled').value.length < 1);
+				window.alert('Please fill out the first \"Verb ending in \"ed\"\" box.');
+				document.getElementById('stumbled').focus();
+				
+			if (document.getElementById('blood').value.length < 1);
+				window.alert('Please fill out the  \"\" box.');
+				document.getElementById('blood').focus();
+				
+			if (document.getElementById('kidnapped').value.length < 1);
+				window.alert('Please fill out the  \"Verb ending in \"ed\"\" box.');
+				document.getElementById('kidnapped').focus();
+				
+			if (document.getElementById('properly').value.length < 1);
+				window.alert('Please fill out the  \"\" box.');
+				document.getElementById('properly').focus();
+				
+			if (document.getElementById('profile').value.length < 1);
+				window.alert('Please fill out the  \"\" box.');
+				document.getElementById('profile').focus();
+				
+			if (document.getElementById('mush').value.length < 1);
+				window.alert('Please fill out the  \"\" box.');
+				document.getElementById('mush').focus();
+				
+			if (document.getElementById('finally').value.length < 1);
+				window.alert('Please fill out the  \"\" box.');
+				document.getElementById('finally').focus(); */
+			
+				document.getElementById('storyBox').innerHTML = story;
+				document.getElementById('paragraph2').innerHTML = part2; 
+				document.getElementById('oldBox').innerHTML = " "
+			}
+			
+		function storyOld()
+			{ var oldStory = "Francis didn't expect to be assaulted by a monster upon waking, especially not one that was so gigantic. It's revolting features and horrendous breath nearly disabled him from rolling out of the way before the gigantic monster killed him. As a self-proclaimed vigilante slash assassin with combat training, Francis wanted to fight back again the monster, however he rapidly recalled that he had just woken up, and was lacking in weaponry. That and the fact that he was still wearing his nightwear forced Francis to run to his armory to equip himself before the monster turned him into a shishkabob. The monster chased Francis into his armory where it prepared to devour him, but luckily for Francis, he forgot to put his favorite scythe into storage, which was aptly named \"My little friend\" despite being much larger than Francis himself. He then pivoted and used his momentum to hurl his scythe at the monster, slashing it to pieces. After retrieving his weapon, Francis decided to take another look at the monster he just killed, and upon doing so realized that he had just killed The Hulk. \"Oh well\", he said to himself, when it dawned on him that his faithful sidekick, Lauren, was nowhere to be found!"; 
+				var oldPart2 = "He searched everywhere for Lauren, but he just couldn't find any trace of her until he stumbled across a small trail of blood leading out of his base of operations. Lauren had been kidnapped! After properly equipping himself, Francis began to follow Lauren's trail so that he might be able to rescue her. Eventually, the trail of blood ended, but thankfully for Francis, the captors were very bad at maintaining a low profile, and he was able to track them all the way down to their hideout. Francis stormed the hideout, turning all those who opposed him into mush, and was finally reunited with Lauren. Oh how he had missed that dog!";
+				document.getElementById('storyBox').innerHTML = oldStory;
+				document.getElementById('paragraph2').innerHTML = oldPart2;
+				document.getElementById('oldBox').innerHTML = " "
+			}
+		function storyBoth()
+			{
+			var hero = document.getElementById('heroName').value;
+			var monster = document.getElementById('antag').value;
+			var monAdj1 = document.getElementById('gigantic').value;
+			var monAdj2 = document.getElementById('revolting').value;
+			var verb1 = document.getElementById('outOfBed').value;
+			var job1 = document.getElementById('vigilante').value;
+			var job2 = document.getElementById('assassin').value;
+			var adv1 = document.getElementById('rapidly').value;
+			var noun1 = document.getElementById('nightwear').value;
+			var wbase = document.getElementById('armory').value;
+			var lunch = document.getElementById('shishkabob').value;
+			var verb2 = document.getElementById('devour').value;
+			var noun2 = document.getElementById('scythe').value;
+			var tHulk = document.getElementById('hulk').value;
+			var adj3 = document.getElementById('faithful').value;
+			var doge = document.getElementById('damsName').value;
+			// paragraph 2 
+			//story + "<span class='wordChange'>" + hero + "</span>"
+			var verb3 = document.getElementById('stumbled').value;
+			var noun3 = document.getElementById('blood').value;
+			var verb4 = document.getElementById('kidnapped').value;
+			var adv2 = document.getElementById('properly').value;
+			var noun4 = document.getElementById('profile').value;
+			var noun5 = document.getElementById('mush').value;
+			var adv3 = document.getElementById('finally').value;
+			
+			var story = "<span class='wordChange' str.toUpperCase('1')>" + hero + "</span>" + " didn't expect to be assaulted by a ";
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " upon waking, especially not one that was so ";
+			story = story + "<span class='wordChange'>" + monAdj1 + "</span>" + ". It's " ;
+			story = story + "<span class='wordChange'>" + monAdj2 + "</span>" + " features and horrendous breath nearly disabled him from " ;
+			story = story + "<span class='wordChange'>" + verb1 + "</span>"  + " out of the way before the " ;
+			story = story + "<span class='wordChange'>" + monAdj1 + "</span>" + " " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " killed him. As a self proclaimed " ;
+			story = story + "<span class='wordChange'>" + job1 + "</span>" + " slash " ;
+			story = story + "<span class='wordChange'>" + job2 + "</span>" + "with combat training, " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " wanted to fight back again the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + ", however he " ;
+			story = story + "<span class='wordChange'>" + adv1 + "</span>" + " recalled that he had just woken up, and was lacking in weaponry. That and the fact that he was still wearing his " ;
+			story = story + "<span class='wordChange'>" + noun1 + "</span>" + " forced " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " to run to his " ;
+			story = story + "<span class='wordChange'>" + wbase + "</span>" + " to equip himself before the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " turned him into a " ;
+			story = story + "<span class='wordChange'>" + lunch + "</span>" + ". The " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " chased "; 
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " into his" ;
+			story = story + "<span class='wordChange'>" + wbase + "</span>" + " where it prepared to " ;
+			story = story + "<span class='wordChange'>" + verb2 + "</span>" + " him, but luckily for " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + ", he forgot to put his favorite " ;
+			story = story + "<span class='wordChange'>" + noun2 + "</span>" + " into storage, which was aptly named \"My little friend\" despite being much larger than " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " himself. He then pivoted and used his momentum to hurl his " ;
+			story = story + "<span class='wordChange'>" + noun2 + "</span>" + " at the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + ", slashing it to pieces. After retrieving his weapon, " ;
+			story = story + "<span class='wordChange'>" + hero + "</span>" + " decided to take another look at the " ;
+			story = story + "<span class='wordChange'>" + monster + "</span>" + " he just killed, and upon doing so realized that he had just killed " ;
+			story = story + "<span class='wordChange'>" + tHulk + "</span>" + ". \"Oh well\", he said to himself, when it dawned on him that his " ;
+			story = story + "<span class='wordChange'>" + adj3 + "</span>" + " sidekick, " ;
+			story = story + "<span class='wordChange'>" + doge + "</span>" + ", was nowhere to be found!";
+			//part 2
+			var part2 = "He searched everywhere for " + "<span class='wordChange'>" + doge + "</span>" ;
+			part2 = part2 + ", but he just couldn't find any trace of her until he " ;
+			part2 = part2 + "<span class='wordChange'>" + verb3 + "</span>" + " across a small trail of " ;
+			part2 = part2 + "<span class='wordChange'>" + noun3 + "</span>" + " leading out of his base of operations. " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + " had been " ;
+			part2 = part2 + "<span class='wordChange'>" + verb4 + "</span>" + "! After " ;
+			part2 = part2 + "<span class='wordChange'>" + adv2 + "</span>" + " equipping himself, " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + " began to follow " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + "'s trail so that he might be able to rescue her. Eventually, the trail of " ;
+			part2 = part2 + "<span class='wordChange'>" + noun3 + "</span>" + " ended, but thankfully for " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + ", the captors were very bad at maintaining a low " ;
+			part2 = part2 + "<span class='wordChange'>" + noun4 + "</span>" + ", and he was able to track them all the way down to their hideout. " ;
+			part2 = part2 + "<span class='wordChange'>" + hero + "</span>" + " stormed the hideout,\, turning all those who opposed him into " ;
+			part2 = part2 + "<span class='wordChange'>" + noun5 + "</span>" + ", and was ";
+			part2 = part2 + "<span class='wordChange'>" + adv3 + "</span>" + " reunited with " ;
+			part2 = part2 + "<span class='wordChange'>" + doge + "</span>" + ". Oh how he had missed that dog!";
+			document.getElementById('storyBox').innerHTML = story;
+				document.getElementById('paragraph2').innerHTML = part2; 
+				
+			var oldStory = "Francis didn't expect to be assaulted by a monster upon waking, especially not one that was so gigantic. It's revolting features and horrendous breath nearly disabled him from rolling out of the way before the gigantic monster killed him. As a self-proclaimed vigilante slash assassin with combat training, Francis wanted to fight back again the monster, however he rapidly recalled that he had just woken up, and was lacking in weaponry. That and the fact that he was still wearing his nightwear forced Francis to run to his armory to equip himself before the monster turned him into a shishkabob. The monster chased Francis into his armory where it prepared to devour him, but luckily for Francis, he forgot to put his favorite scythe into storage, which was aptly named \"My little friend\" despite being much larger than Francis himself. He then pivoted and used his momentum to hurl his scythe at the monster, slashing it to pieces. After retrieving his weapon, Francis decided to take another look at the monster he just killed, and upon doing so realized that he had just killed The Hulk. \"Oh well\", he said to himself, when it dawned on him that his faithful sidekick, Lauren, was nowhere to be found! He searched everywhere for Lauren, but he just couldn't find any trace of her until he stumbled across a small trail of blood leading out of his base of operations. Lauren had been kidnapped! After properly equipping himself, Francis began to follow Lauren's trail so that he might be able to rescue her. Eventually, the trail of blood ended, but thankfully for Francis, the captors were very bad at maintaining a low profile, and he was able to track them all the way down to their hideout. Francis stormed the hideout, turning all those who opposed him into mush, and was finally reunited with Lauren. Oh how he had missed that dog!";
+					document.getElementById('oldBox').innerHTML = oldStory
+			}
+			
+		</script>
+		
+	</head>
+	
+	<body>
+		<form id=frmThing>
+		<h1> Welcome to Computer Mad Libs! </h1>
+		<br> <br>
+		Name
+		<input type="text" id=heroName > <br> 
+		Noun
+		<input type="text" id=antag > <br> 
+		Adjective
+		<input type="text" id=gigantic > <br> 
+		Adjective
+		<input type="text" id=revolting > <br> 
+		Verb (with gerund)
+		<select id=outOfBed>  
+		<option> jumping	<option> rolling
+		<option> leaping	<option> stumbling
+		<option> dodging	</select> <br>
+		Occupation
+		<input type="text" id=vigilante > <br> 
+		Occupation
+		<input type="text" id=assassin > <br> 
+		Adverb
+		<input type="text" id=rapidly > <br> 
+		Clothing
+		<input type="text" id=nightwear > <br> 
+		Place
+		<input type="text" id=armory > <br> 
+		Food
+		<input type="text" id=shishkabob > <br> 
+		Verb
+		<input type="text" id=devour > <br>
+		Noun
+		<input type="text" id=scythe > <br> 
+		Superhero
+		<input type="text" id=hulk > <br> 
+		Adjective
+		<input type="text" id=faithful > <br> 
+		Name
+		<input type="text" id=damsName > <br>
+		Verb ending with "ed"
+		<input type="text" id=stumbled > <br>
+		Noun
+		<input type="text" id=blood > <br>
+		Verb ending with "ed"
+		<input type="text" id=kidnapped > <br>
+		Adverb
+		<input type="text" id=properly > <br>
+		Noun
+		<input type="text" id=profile > <br>
+		Noun
+		<input type="text" id=mush > <br>
+		Adverb
+		<input type="text" id=finally > <br>
+		
+		<br> <br>
+	<p class="customButton" id=storyCreate  onClick="storyNew()" onMouseOver="this.style.backgroundColor='yellow'" onMouseOut="this.style.backgroundColor='green'" title="This will replace the existing story"> Click here to create your story </p>
+	<br> <br>
+	<p class="customButton" id=showOG onClick="storyOld()" onMouseOver="this.style.backgroundColor='yellow'" onMouseOut="this.style.backgroundColor='green'" title="This will replace the existing story"> Click here to see the original story. </p>
+	<br> <br>
+	<p class="customButton" id=showBoth onClick="storyBoth()" onMouseOver="this.style.backgroundColor='yellow'" onMouseOut="this.style.backgroundColor='green'" > Click here to see both stories simultaneously </p>
+		<br> <br>
+		<dt id=storyBox> </dt>
+		<dt id=paragraph2> </dt>
+		<br> <br>
+		<div id=oldBox> </div>
+
+		</form>
+	
+	</body>
+	
+	</html>
+
+
+
+

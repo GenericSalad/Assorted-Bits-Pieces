@@ -1,0 +1,247 @@
+
+	<html>
+	<head>
+	<title>  Card War 3	</title>
+	<style type="text/css">
+	body 	{text-align: center;
+				margin-top: 180px;
+			}
+	.spade {position: fixed;
+			left: 0%;
+			top: 0%}
+	.heart {position: fixed;
+			right: 0%;
+			top: 0%}
+	.diamond {position: fixed;
+			left: 0%;
+			bottom: 0%}
+	.club {position: fixed;
+			right: 0%;
+			bottom: 0%}
+	
+	p.pCardRemain {position: absolute;
+					left: 20%;
+					right: 70%;
+					top: 20%;
+					}
+	p.cCardRemain {position: absolute;
+					right: 20%;
+					left: 70%;
+					top: 20%;
+					}
+	p.customButton {
+			color: blue;
+			display: inline;
+			background-color: green;
+			border-width: 5px;
+			border-color: lightblue;
+			border-radius: 10px;
+			border-style: solid;
+			padding: 5px;
+			cursor: pointer;
+			font-family: Arial;
+			}
+	p.customButton:hover 
+			{background-color: yellow}
+	</style>
+	<script type="text/JavaScript">	
+	//p.customButton:hover {background-color: yellow}		
+		var playScore = 0
+		var compScore = 0
+		var playDeck = []
+		var compDeck = []
+		
+		for (i=0;i<=51;i++) // fill both decks
+			{  playDeck[i] = i + '.jpg' 
+			compDeck[i] = i + '.jpg' 
+				}
+		var cardLeft = 52 // keep track of deck size
+		
+			var	playSpade = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var playHeart = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var	playDiamond = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var playClub = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var	compSpade = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var compHeart = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var	compDiamond = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			var compClub = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+		
+	function toBattle()
+		{
+			var playSpadeOut = ""
+			var playHeartOut = ""
+			var playDiamondOut = ""
+			var playClubOut = ""
+			var compSpadeOut = ""
+			var compHeartOut = ""
+			var compDiamondOut = ""
+			var compClubOut = ""
+			
+			var playNum = Math.floor(Math.random() * 52); // gen random num
+			var compNum = Math.floor(Math.random() * 52);
+				while (playDeck[playNum] == undefined)
+					{playNum = Math.floor(Math.random() * 52);
+					}
+				while (compDeck[compNum] == undefined)
+					{compNum = Math.floor(Math.random() * 52)
+					} 
+				cardLeft -= 1 // subtract cards
+				
+				document.getElementById('playCard').src = playDeck[playNum];
+				document.getElementById('compCard').src = compDeck[compNum];
+				
+				if (playNum%13 > compNum%13) // get and compare remainders to find rank
+					{document.getElementById('outcomeBox').innerHTML = 'The Winner is: the player'
+					playScore += 1
+					document.getElementById('idPlayScore').innerHTML = "Player wins: " + playScore
+				} else if (playNum%13 < compNum%13)
+					{document.getElementById('outcomeBox').innerHTML = 'The Winner is: the computer'
+					compScore += 1 
+					document.getElementById('idCompScore').innerHTML = "Computer wins: " + compScore
+				} else
+					{document.getElementById('outcomeBox').innerHTML = 'The round ended in a tie'
+				}
+			delete playDeck[playNum] // take cards out of the deck
+			delete compDeck[compNum]
+			
+			if (playNum <13) // remove cards from deck display
+							{playSpade[playNum%13] = "a"
+						} else if (playNum > 12 && playNum < 26 )
+							{playHeart[playNum%13] = "a"
+						} else if (playNum > 25 && playNum < 39 )
+							{playDiamond[playNum%13] = "a"
+						} else 
+							{playClub[playNum%13] = "a"
+						}
+						if (compNum <13)
+							{compSpade[compNum%13] = "a"
+						} else if (compNum > 12 && compNum < 26 )
+							{compHeart[compNum%13] = "a"
+						} else if (compNum > 25 && compNum < 39 )
+							{compDiamond[compNum%13] = "a"
+						} else 
+							{compClub[compNum%13] = "a"
+						}
+			for (i=0;i<playSpade.length;i++) // removes excess commas from array by creating a new output
+				{ if (playSpade[i] != "a")
+					{
+					playSpadeOut += playSpade[i]
+					}else {i=i}
+				if (playHeart[i] != "a")
+					{
+					playHeartOut += playHeart[i] 
+					}else {i=i}
+				if (playDiamond[i] != "a")
+					{
+					playDiamondOut += playDiamond[i] 
+					}else {i=i}
+				if (playClub[i] != "a")
+					{
+					playClubOut += playClub[i] 
+					}else {i=i}
+				if (compSpade[i] != "a")
+					{
+					compSpadeOut += compSpade[i]
+					}else {i=i}
+				if (compHeart[i] != "a")
+					{
+					compHeartOut += compHeart[i]
+					}else {i=i}
+				if (compDiamond[i] != "a")
+					{
+					compDiamondOut += compDiamond[i] 
+					}else {i=i}
+				if (compClub[i] != "a")
+					{
+					compClubOut += compClub[i] 
+					}else {i=i}
+				}
+				// display the remainder of the deck
+				document.getElementById('playCardRemain').innerHTML = "<strong>Player cards remaining:</strong> <br><br> Spades: <br>" + playSpadeOut + "<br> <br> Hearts: <br>" + playHeartOut + "<br> <br> Diamonds: <br>" + playDiamondOut + "<br> <br> Clubs: <br>" + playClubOut
+				document.getElementById('compCardRemain').innerHTML = "<strong>Computer cards remaining:</strong> <br><br> Spades: <br>" + compSpadeOut + "<br> <br> Hearts: <br>" + compHeartOut + "<br> <br> Diamonds: <br>" + compDiamondOut + "<br> <br> Clubs: <br>" + compClubOut
+				
+				if (cardLeft == 0 && playScore > compScore) // declare winner if both decks are empty
+					{window.alert('Congratulations! After waging an entire war, you have beaten the computer!')
+					gameReset()
+				} else if (cardLeft == 0 && playScore < compScore)
+					{window.alert('I\'m sorry, after waging an entire war you have been defeated by the computer.')
+					gameReset()
+				} else if (cardLeft == 0 && playScore == compScore)
+					{window.alert('Well then. This war has ended in a draw. Better luck next time')
+					gameReset()	
+				} else 
+					{playNum = ""}
+		}
+		//
+	function paciPeace()	// forcibly display a draw
+		{
+			var peaceNum = Math.floor(Math.random() * 52)
+			playDeck2 = []
+			compDeck2 = []
+			
+		for (i=0;i<=51;i++) // fill both decks
+			{  playDeck2[i] = i + '.jpg' 
+			compDeck2[i] = i + '.jpg' 
+				}	
+			document.getElementById('playCard').src = playDeck2[peaceNum];
+			document.getElementById('compCard').src = compDeck2[peaceNum];
+			document.getElementById('outcomeBox').innerHTML = 'The round ended in a tie'
+			
+			
+		}
+	function gameReset() // reset all values
+		{
+			document.getElementById('outcomeBox').innerHTML = "The Winner is:"
+			document.getElementById("idPlayScore").innerHTML = "Player wins: 0 "
+			document.getElementById("idCompScore").innerHTML = "Computer wins: 0 "
+			document.getElementById("playCard").src = "CardBack.jpg"
+			document.getElementById("compCard").src = "CardBack.jpg"
+			cardLeft = 52
+			playScore = 0
+			compScore = 0
+			for(i=0;i<=51;i++)
+				{
+					playDeck[i] = i + '.jpg'
+					compDeck[i] = i + ".jpg"
+				}	
+			playSpade = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			playHeart = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			playDiamond = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			playClub = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			compSpade = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			compHeart = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			compDiamond = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			compClub = ['2,','3,','4,','5,','6,','7,','8,','9,','10,',"J,","Q,","K,","A"]
+			document.getElementById('playCardRemain').innerHTML = ""
+			document.getElementById('compCardRemain').innerHTML = ""
+		}
+
+	</script>
+	
+	
+	</head>
+	
+	<body>
+		<form>
+		<h1 id=outcomeBox> The Winner is: </h1> 
+		<br> <br>
+		<p class="customButton" onClick="toBattle()" onMouseOver="this.style.backgroundColor = 'yellow'" onMouseOut="this.style.backgroundColor = 'green'"> Click here to wage glorious battle </p>
+		<p class="customButton" onClick='paciPeace()' title="This button is independant of the actual war, will not affect the decks, and can draw cards that have already been played" onMouseOver="this.style.backgroundColor = 'yellow'" onMouseOut="this.style.backgroundColor = 'green'"> Click here for a tie </p>
+		<br> <br> <br> <br>
+		<img src="CardBack.jpg" id=playCard width="120" height="178">
+		<img src="CardBack.jpg" id=compCard width="120" height="178">
+		<br> <br>
+		<p id=idPlayScore class="pScore"> Player wins: 0</p>
+		<p id=idCompScore class="cScore"> Computer wins: 0</p>
+		<br>
+		<p class="customButton" onClick="gameReset()" onMouseOver="this.style.backgroundColor = 'yellow'" onMouseOut="this.style.backgroundColor = 'green'"> Click here to reset the game </p>
+		<p id=playCardRemain class="pCardRemain"> </p>
+		<p id=compCardRemain class="cCardRemain"> </p>
+		<img class="spade" src="Spade.jpg" width="150" height="150" >
+		<img class="heart" src="Heart.jpg" width="150" height="150" >
+		<img class="diamond" src="Diamond.jpg" width="150" height="150" >
+		<img class="club" src="Club.jpg" width="150" height="150" >	
+		</form>
+		
+	</body>
+	</html>
